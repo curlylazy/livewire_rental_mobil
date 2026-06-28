@@ -1,0 +1,18 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css'); */
+
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;700&display=swap');
+@import 'tailwindcss';
+@import '../../vendor/livewire/flux/dist/flux.css';
+
+@theme {
+    --font-sans: Inter, sans-serif;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* @import url('https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;700&display=swap');
+
+body {
+    font-family: 'Karla', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+} */

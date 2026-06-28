@@ -1,0 +1,106 @@
+/* Shared styles for Bali Car Rental pages */
+
+:root {
+  /* canvas */
+  --canvas-night: #000000;
+  --canvas-light: #ffffff;
+  --canvas-cream: #fbfbf5;
+
+  /* text */
+  --ink: #000000;
+  --on-primary: #ffffff;
+
+  /* accents (reserved for light track) */
+  --aloe-10: #c1fbd4;
+  --pistachio-10: #d4f9e0;
+
+  /* borders */
+  --hairline-light: #e4e4e7;
+
+  --rounded-pill: 9999px;
+}
+
+body {
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  font-feature-settings: "ss03";
+  letter-spacing: 0;
+}
+
+/* Pill button (reusable) */
+.btn-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--rounded-pill);
+  padding: 12px 24px;
+  font-weight: 500;
+  line-height: 1;
+  min-height: 44px;
+  white-space: nowrap;
+  transition: transform .08s ease, filter .15s ease;
+}
+
+.btn-pill:active {
+  transform: translateY(1px);
+}
+
+.btn-outline-on-light {
+  background: var(--canvas-light);
+  color: var(--ink);
+  border: 1px solid var(--ink);
+}
+
+.btn-outline-on-dark {
+  background: transparent;
+  color: var(--on-primary);
+  border: 2px solid var(--on-primary);
+}
+
+.btn-primary {
+  background: var(--canvas-night);
+  color: var(--on-primary);
+  border: 1px solid var(--canvas-night);
+}
+
+.btn-aloe {
+  background: var(--aloe-10);
+  color: var(--ink);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.text-shadow-soft {
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+}
+
+/* Floating WhatsApp */
+.wa-float {
+  position: fixed;
+  z-index: 50;
+  right: 16px;
+  bottom: 16px;
+}
+
+/* Tipografi display thin (approx) */
+.display-xxl {
+  font-size: 96px;
+  line-height: 1;
+  font-weight: 400;
+  letter-spacing: 2.4px;
+}
+
+.display-xl {
+  font-size: 70px;
+  line-height: 1;
+  font-weight: 400;
+}
+
+@media (max-width: 767px) {
+  .display-xxl {
+    font-size: 64px;
+    letter-spacing: 1.6px;
+  }
+  .display-xl {
+    font-size: 48px;
+  }
+}
+
