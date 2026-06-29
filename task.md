@@ -3,10 +3,10 @@
 - [x] Install Livewire and Tailwind CSS
 - [x] Port Admin layout from `livewire_admin_tailwind`
 - [x] Implement Front layout from `html/index.html`
-- [ ] Create Database Migrations & Models (User, Paket, OurService, Testimoni, Galeri)
+- [x] Create Database Migrations & Models (User, Paket, OurService, Testimoni, Galeri)
   - [x] Create migration files and update table schemas
-  - [ ] Update Models (`$guarded = []`, primary keys, soft deletes)
-  - [ ] Update User Model to use `user` instead of `name`
+  - [x] Update Models (`$guarded = []`, primary keys, soft deletes)
+  - [x] Update User Model to use `user` instead of `name`
 - [ ] Run Migrations (`php artisan migrate`)
 - [ ] Setup Admin Routing and Dashboard Livewire components
 - [ ] Build assets (`npm run build`)

@@ -6,5 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Paket extends Model
 {
-    //
+    use \Illuminate\Database\Eloquent\SoftDeletes;
+    use \Illuminate\Database\Eloquent\Concerns\HasUuids;
+
+    protected $guarded = [];
+    protected $primaryKey = 'kodepaket';
+    protected $keyType = 'string';
+    public $incrementing = false;
 }
