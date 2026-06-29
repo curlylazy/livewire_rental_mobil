@@ -4,12 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Galeri extends Model
+class OurServiceModel extends Model
 {
+    use \Illuminate\Database\Eloquent\SoftDeletes;
     use \Illuminate\Database\Eloquent\Concerns\HasUuids;
 
+    protected $table = 'our_services';
     protected $guarded = [];
-    protected $primaryKey = 'kodegaleri';
+    protected $primaryKey = 'kodeour_service';
     protected $keyType = 'string';
     public $incrementing = false;
 }

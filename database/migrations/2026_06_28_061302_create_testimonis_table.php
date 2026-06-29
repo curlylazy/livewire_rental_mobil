@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('testimonis', function (Blueprint $table) {
+        Schema::create('testimoni', function (Blueprint $table) {
             $table->uuid('kodetestimoni')->primary();
             $table->string('nama');
             $table->string('alamat');

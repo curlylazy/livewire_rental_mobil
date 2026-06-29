@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pakets', function (Blueprint $table) {
+        Schema::create('paket', function (Blueprint $table) {
             $table->uuid('kodepaket')->primary();
             $table->string('tipe_mobil');
             $table->string('merk');

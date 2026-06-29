@@ -4,13 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Testimoni extends Model
+class GaleriModel extends Model
 {
-    use \Illuminate\Database\Eloquent\SoftDeletes;
     use \Illuminate\Database\Eloquent\Concerns\HasUuids;
 
+    protected $table = 'galeri';
     protected $guarded = [];
-    protected $primaryKey = 'kodetestimoni';
+    protected $primaryKey = 'kodegaleri';
     protected $keyType = 'string';
     public $incrementing = false;
 }

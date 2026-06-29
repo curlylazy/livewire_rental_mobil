@@ -12,10 +12,12 @@ use Illuminate\Notifications\Notifiable;
 
 #[Fillable(['user', 'email', 'password'])]
 #[Hidden(['password', 'remember_token'])]
-class User extends Authenticatable
+class UserModel extends Authenticatable
 {
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
+
+    protected $table = 'users';
 
     /**
      * Get the attributes that should be cast.

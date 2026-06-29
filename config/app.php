@@ -123,4 +123,31 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Data Perusahaan / Instansi
+    |--------------------------------------------------------------------------
+    |
+    |
+    */
+
+    'alamat' => 'Jalan Campuan Asri Blok BB No 67, Dalung, Kuta Utara',
+    'alamat_1' => 'Kuta, Kuta Utara, Bali',
+    'alamat_2' => 'Jalan Campuan Asri Blok BB No 67, Dalung',
+    'url_google_maps' => 'https://goo.gl/maps/jan4kk7tke7ZtUDs8',
+    'notelepon' => '(0361) 8945642',
+    'wa' => '+628563735581',
+    'youtube' => 'https://www.youtube.com/@desagubug6407',
+    'fb' => 'https://www.facebook.com/dewatautamauniform',
+    'ig' => 'https://www.instagram.com/dewatautamauniform/?hl=en',
+    'email' => 'info@balicoding.com',
+    'kodepos' => '80115',
+    'title' => 'Balicoding | Balicoding.com',
+    'owner' => 'Styawan Saputra',
+    'webname' => 'Balicoding',
+    'webdomain' => 'https://balicoding.com',
+    'desc' => 'kami mengerjakan projek aplikasi mobile dan web untuk kebutuhan anda, website company, website ecommerce, aplikasi mobile custom, pengerjaan menggunakan bahasa pemrograman PHP, yang bisa dicustom sesuai dengan kebutuhan anda.',
+    'desc2' => 'Apakah Anda siap untuk mengubah pengalaman online Anda? <b>Bali Coding</b> hadir untuk memenuhi kebutuhan digital Anda dengan. Pembuatan <b>Web Aplikasi</b>, <b>E-Commerce</b>, <b>Katalog Produk</b>, <b>Company Profile</b>, dan <b>Mobile Apps</b>',
+    'wa_sales_1' => '+628563735581',
+    'wa_sales_2' => '+628563735581',
 ];
