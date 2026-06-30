@@ -117,8 +117,7 @@ new class extends Component
         <!-- Bottom Link -->
         <div class="mt-8 text-center">
             <p class="text-sm text-blue-100">
-                Don't have an account? 
-                <a href="#" class="font-semibold text-white hover:underline transition duration-150">Register for free</a>
+                Don't have an account?
             </p>
         </div>
     </div>
