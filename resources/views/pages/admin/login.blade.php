@@ -16,12 +16,12 @@ new class extends Component
             'password' => 'required',
         ]);
 
-        if (Auth::attempt(['username' => $this->username, 'password' => $this->password], $this->remember)) {
-            session()->regenerate();
-            return redirect()->intended(route('dashboard'));
+        if (!Auth::attempt(['username' => $this->username, 'password' => $this->password], $this->remember)) {
+            $this->addError('username', 'Username atau password salah.');
         }
-
-        $this->addError('username', 'Username atau password salah.');
+        
+        session()->regenerate();
+        $this->redirect('/admin/dashboard');
     }
 
     public function render()

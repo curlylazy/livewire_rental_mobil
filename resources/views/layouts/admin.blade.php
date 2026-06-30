@@ -39,7 +39,7 @@
         <flux:sidebar sticky collapsible="mobile" class="bg-slate-100 dark:bg-zinc-900 border-r border-zinc-200 dark:border-zinc-700">
             <flux:sidebar.header>
                 <flux:sidebar.brand
-                    href="{{ route('dashboard') }}"
+                    href="/admin/dashboard"
                     logo="{{ asset('logo.png') }}"
                     name="{{ config('app.webname') }}"
                 />
@@ -47,14 +47,14 @@
             </flux:sidebar.header>
             <flux:sidebar.search placeholder="Search..." />
             <flux:sidebar.nav>
-                <flux:sidebar.item icon="home" wire:navigate href="{{ route('dashboard') }}" :current="request()->routeIs('dashboard')">Dashboard</flux:sidebar.item>
-                <flux:sidebar.item icon="users" wire:navigate href="{{ route('user_list') }}" :current="request()->routeIs('user_*')">User</flux:sidebar.item>
-                <flux:sidebar.item icon="user-group" wire:navigate href="{{ route('pelanggan_list') }}" :current="request()->routeIs('pelanggan_*')">Pelanggan</flux:sidebar.item>
-                <flux:sidebar.item icon="briefcase" wire:navigate href="{{ route('projek_list') }}" :current="request()->routeIs('projek_*')">Projek</flux:sidebar.item>
-                <flux:sidebar.item icon="credit-card" wire:navigate href="{{ route('rekening_list') }}" :current="request()->routeIs('rekening_*')">Rekening</flux:sidebar.item>
-                <flux:sidebar.item icon="document-text" wire:navigate href="{{ route('invoice_list') }}" :current="request()->routeIs('invoice_*')">Invoice</flux:sidebar.item>
-                <flux:sidebar.item icon="photo" wire:navigate href="{{ route('galeri_list') }}" :current="request()->routeIs('galeri_*')">Galeri</flux:sidebar.item>
-                <flux:sidebar.item icon="newspaper" wire:navigate href="{{ route('blog_list') }}" :current="request()->routeIs('blog_*')">Blog</flux:sidebar.item>
+                <flux:sidebar.item icon="home" wire:navigate href="/admin/dashboard" :current="request()->is('admin/dashboard')">Dashboard</flux:sidebar.item>
+                <flux:sidebar.item icon="users" wire:navigate href="/admin/user" :current="request()->is('admin/user', 'admin/user/*')">User</flux:sidebar.item>
+                <flux:sidebar.item icon="user-group" wire:navigate href="/admin/pelanggan" :current="request()->is('admin/pelanggan', 'admin/pelanggan/*')">Pelanggan</flux:sidebar.item>
+                <flux:sidebar.item icon="briefcase" wire:navigate href="/admin/projek" :current="request()->is('admin/projek', 'admin/projek/*')">Projek</flux:sidebar.item>
+                <flux:sidebar.item icon="credit-card" wire:navigate href="/admin/rekening" :current="request()->is('admin/rekening', 'admin/rekening/*')">Rekening</flux:sidebar.item>
+                <flux:sidebar.item icon="document-text" wire:navigate href="/admin/invoice" :current="request()->is('admin/invoice', 'admin/invoice/*')">Invoice</flux:sidebar.item>
+                <flux:sidebar.item icon="photo" wire:navigate href="/admin/galeri" :current="request()->is('admin/galeri', 'admin/galeri/*')">Galeri</flux:sidebar.item>
+                <flux:sidebar.item icon="newspaper" wire:navigate href="/admin/blog" :current="request()->is('admin/blog', 'admin/blog/*')">Blog</flux:sidebar.item>
             </flux:sidebar.nav>
             <flux:sidebar.spacer />
 
