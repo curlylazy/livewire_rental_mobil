@@ -2,16 +2,15 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Attributes\Table;
+use Illuminate\Database\Eloquent\Attributes\Unguarded;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 
+#[Table(name: 'our_services', key: 'kodeour_service', keyType: 'string', incrementing: false)]
+#[Unguarded]
 class OurServiceModel extends Model
 {
-    use \Illuminate\Database\Eloquent\SoftDeletes;
-    use \Illuminate\Database\Eloquent\Concerns\HasUuids;
-
-    protected $table = 'our_services';
-    protected $guarded = [];
-    protected $primaryKey = 'kodeour_service';
-    protected $keyType = 'string';
-    public $incrementing = false;
+    use SoftDeletes, HasUuids;
 }

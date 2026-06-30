@@ -6,15 +6,17 @@
 
         <title>{{ $title ?? 'Admin | '.config('app.namaweb') }}</title>
 
-        {{-- Tailwind --}}
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.bunny.net">
+        <link href="https://fonts.bunny.net/css?family=inter:400,500,600&display=swap" rel="stylesheet" />
 
-        {{-- DaisyUI --}}
-        <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
-        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @fluxAppearance
+        @livewireStyles
     </head>
-    <body>
+    <body class="min-h-screen bg-zinc-50 dark:bg-zinc-900 antialiased">
         {{ $slot }}
+
+        @livewireScripts
+        @fluxScripts
     </body>
 </html>

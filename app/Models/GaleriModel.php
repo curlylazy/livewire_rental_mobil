@@ -2,15 +2,15 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Attributes\Table;
+use Illuminate\Database\Eloquent\Attributes\Unguarded;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+#[Table(name: 'galeri', key: 'kodegaleri', keyType: 'string', incrementing: false)]
+#[Unguarded]
 class GaleriModel extends Model
 {
-    use \Illuminate\Database\Eloquent\Concerns\HasUuids;
-
-    protected $table = 'galeri';
-    protected $guarded = [];
-    protected $primaryKey = 'kodegaleri';
-    protected $keyType = 'string';
-    public $incrementing = false;
+    use HasFactory, HasUuids;
 }

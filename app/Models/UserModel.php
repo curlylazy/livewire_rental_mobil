@@ -6,18 +6,19 @@ namespace App\Models;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
+use Illuminate\Database\Eloquent\Attributes\Table;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-#[Fillable(['user', 'email', 'password'])]
+#[Table(name: 'users')]
+#[Fillable(['username', 'email', 'password'])]
 #[Hidden(['password', 'remember_token'])]
 class UserModel extends Authenticatable
 {
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
 
-    protected $table = 'users';
 
     /**
      * Get the attributes that should be cast.
