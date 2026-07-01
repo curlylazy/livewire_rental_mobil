@@ -15,11 +15,11 @@ return new class extends Migration
             $table->uuid('kodepaket')->primary();
             $table->string('tipe_mobil');
             $table->string('merk');
-            $table->text('mobil');
+            $table->string('mobil');
             $table->integer('harga');
             $table->boolean('isDriver')->default(false);
             $table->boolean('isFuel')->default(false);
-            $table->text('fasilitas')->nullable();
+            $table->json('fasilitas')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

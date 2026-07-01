@@ -8,15 +8,17 @@ use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Attributes\Table;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\Permission\Traits\HasRoles;
 
 #[Table(name: 'users')]
 #[Fillable(['username', 'nama', 'password'])]
 #[Hidden(['password', 'remember_token'])]
 class UserModel extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasRoles, HasFactory, Notifiable, SoftDeletes;
 
     public function scopeSearch(Builder $query, string $katakunci): void
     {

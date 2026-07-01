@@ -16,10 +16,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        UserModel::create([
-            "username" => "admin",
-            "password" => Hash::make("@12345"),
-            "nama" => "Admin Rental",
+        $this->call([
+            UserSeeder::class,
+            MasterSeeder::class,
         ]);
     }
 }

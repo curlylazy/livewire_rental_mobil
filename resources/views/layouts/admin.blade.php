@@ -49,12 +49,10 @@
             <flux:sidebar.nav>
                 <flux:sidebar.item icon="home" wire:navigate href="/admin/dashboard" :current="request()->is('admin/dashboard')">Dashboard</flux:sidebar.item>
                 <flux:sidebar.item icon="users" wire:navigate href="/admin/user" :current="request()->is('admin/user', 'admin/user/*')">User</flux:sidebar.item>
-                <flux:sidebar.item icon="user-group" wire:navigate href="/admin/pelanggan" :current="request()->is('admin/pelanggan', 'admin/pelanggan/*')">Pelanggan</flux:sidebar.item>
-                <flux:sidebar.item icon="briefcase" wire:navigate href="/admin/projek" :current="request()->is('admin/projek', 'admin/projek/*')">Projek</flux:sidebar.item>
-                <flux:sidebar.item icon="credit-card" wire:navigate href="/admin/rekening" :current="request()->is('admin/rekening', 'admin/rekening/*')">Rekening</flux:sidebar.item>
-                <flux:sidebar.item icon="document-text" wire:navigate href="/admin/invoice" :current="request()->is('admin/invoice', 'admin/invoice/*')">Invoice</flux:sidebar.item>
                 <flux:sidebar.item icon="photo" wire:navigate href="/admin/galeri" :current="request()->is('admin/galeri', 'admin/galeri/*')">Galeri</flux:sidebar.item>
-                <flux:sidebar.item icon="newspaper" wire:navigate href="/admin/blog" :current="request()->is('admin/blog', 'admin/blog/*')">Blog</flux:sidebar.item>
+                <flux:sidebar.item icon="wrench-screwdriver" wire:navigate href="/admin/our-service" :current="request()->is('admin/our-service', 'admin/our-service/*')">Our Service</flux:sidebar.item>
+                <flux:sidebar.item icon="briefcase" wire:navigate href="/admin/paket" :current="request()->is('admin/paket', 'admin/paket/*')">Paket</flux:sidebar.item>
+                <flux:sidebar.item icon="chat-bubble-bottom-center-text" wire:navigate href="/admin/testimoni" :current="request()->is('admin/testimoni', 'admin/testimoni/*')">Testimoni</flux:sidebar.item>
             </flux:sidebar.nav>
             <flux:sidebar.spacer />
 

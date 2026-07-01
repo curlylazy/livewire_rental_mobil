@@ -3,37 +3,33 @@
 use Livewire\Component;
 use Livewire\WithPagination;
 use Livewire\Attributes\Url;
-use App\Models\UserModel;
+use App\Models\TestimoniModel;
 use Flux\Flux;
+use App\Lib\IDateTime;
 
 new class extends Component
 {
     use WithPagination;
 
-    public $pageTitle = "User";
-    public $pageName = "user";
+    public $pageTitle = "Testimoni";
+    public $pageName = "testimoni";
     public $selectedKode = "";
     public $selectedNama = "";
 
     #[Url]
     public $katakunci = "";
 
-    public function mount()
-    {
-    }
-
     public function readData()
     {
-        $data = UserModel::search($this->katakunci)->paginate(20);
-        return $data;
+        return TestimoniModel::search($this->katakunci)->paginate(20);
     }
 
     public function hapus(String $id)
     {
         try
         {
-            $data = UserModel::findOrFail($id);
-            $namadata = $data->namauser;
+            $data = TestimoniModel::findOrFail($id);
+            $namadata = $data->nama;
             $data->delete();
             Flux::modal('modalConfirm')->close();
 
@@ -41,7 +37,7 @@ new class extends Component
 
             session()->flash('success', "berhasil hapus data $namadata");
         } catch (\Exception $e) {
-            $this->dispatch('notif', message: "gagal simpan data : ".$e->getMessage(), icon: "error");
+            $this->dispatch('notif', message: "gagal hapus data : ".$e->getMessage(), icon: "error");
         }
     }
 
@@ -66,7 +62,7 @@ new class extends Component
     <flux:heading size="xl" level="1">{{ $pageTitle }}</flux:heading>
     <flux:breadcrumbs class="mt-2 mb-2">
         <flux:breadcrumbs.item href="/admin/dashboard">Dashboard</flux:breadcrumbs.item>
-        <flux:breadcrumbs.item href="/admin/user">User</flux:breadcrumbs.item>
+        <flux:breadcrumbs.item href="/admin/testimoni">Testimoni</flux:breadcrumbs.item>
         <flux:breadcrumbs.item>List</flux:breadcrumbs.item>
     </flux:breadcrumbs>
     <flux:separator variant="subtle" class='mb-3' />
@@ -75,7 +71,7 @@ new class extends Component
     <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
         <div class="flex items-center gap-2">
             <flux:button href="/admin/dashboard" icon="arrow-left" variant="outline" wire:navigate></flux:button>
-            <flux:button href="/admin/user/add" icon="plus" variant="primary" wire:navigate>Tambah</flux:button>
+            <flux:button href="/admin/testimoni/add" icon="plus" variant="primary" wire:navigate>Tambah</flux:button>
         </div>
         <div class="w-full md:w-100">
             <flux:input.group>
@@ -90,23 +86,20 @@ new class extends Component
         <flux:table :paginate="$dataRows">
             <flux:table.columns>
                 <flux:table.column>No</flux:table.column>
-                <flux:table.column>User</flux:table.column>
                 <flux:table.column>Nama</flux:table.column>
+                <flux:table.column>Alamat</flux:table.column>
+                <flux:table.column>Isi Testimoni</flux:table.column>
                 <flux:table.column>Create</flux:table.column>
-                <flux:table.column></flux:table.column>
             </flux:table.columns>
 
             <flux:table.rows>
                 @foreach ($dataRows as $data)
-                    <flux:table.row class="hover:cursor-pointer">
+                    <flux:table.row class="hover:cursor-pointer" wire:click="$dispatch('selected-data', { 'data' : {{ $data }} })">
                         <flux:table.cell>{{ $loop->index + 1 }}</flux:table.cell>
-                        <flux:table.cell>{{ $data->username }}</flux:table.cell>
-                        <flux:table.cell>{{ $data->namauser }}</flux:table.cell>
+                        <flux:table.cell>{{ $data->nama }}</flux:table.cell>
+                        <flux:table.cell>{{ $data->alamat }}</flux:table.cell>
+                        <flux:table.cell>{{ Str::limit($data->isi, 60) }}</flux:table.cell>
                         <flux:table.cell>{{ IDateTime::formatDate($data->created_at) }}</flux:table.cell>
-                        <flux:table.cell>
-                            <flux:button variant="primary" size="sm" icon="pencil-square" href='{{ url("/admin/$$pageName/$data->kodeuser") }}' />
-                            <flux:button variant="danger" size="sm" icon="trash" wire:click='$dispatch("confirm-delete", { data: {{ $data }} })' />
-                        </flux:table.cell>
                     </flux:table.row>
                 @endforeach
             </flux:table.rows>
@@ -120,37 +113,51 @@ new class extends Component
                 <flux:card 
                     size="sm" 
                     class="hover:bg-zinc-50 dark:hover:bg-zinc-700 hover:cursor-pointer"
+                    wire:click="$dispatch('selected-data', { 'data' : {{ $data }} })"
                 >
-                    <flux:heading size="lg">{{ $data->username }}</flux:heading>
-                    <div class="flex gap-y-2">
-                        <div class="grow flex flex-col gap-1 mt-2">
-                            <flux:text>{{ $data->namauser }}</flux:text>
-                            <flux:text>{{ IDateTime::formatDate($data->created_at) }}</flux:text>
-                        </div>
-                        <div>
-                            <flux:button variant="primary" size="sm" icon="pencil-square" />
-                            <flux:button variant="danger" size="sm" icon="trash" />
-                        </div>
+                    <flux:heading size="lg">{{ $data->nama }}</flux:heading>
+                    <flux:text class="text-xs text-zinc-500 font-medium">Asal: {{ $data->alamat }}</flux:text>
+                    <div class="flex flex-col gap-1 mt-2">
+                        <flux:text class="line-clamp-3 italic">"{{ $data->isi }}"</flux:text>
+                        <flux:text class="text-xs mt-1 text-zinc-400">{{ IDateTime::formatDate($data->created_at) }}</flux:text>
                     </div>
                 </flux:card>
             @endforeach
         </div>
         <flux:pagination :paginator="$dataRows" />
     </x-partials.viewsmall>
+
+    {{-- *** Modal Selected --}}
+    <x-partials.modal-selected>
+        <x-slot:pageTitle><span wire:text="pageTitle"></span></x-slot>
+        <x-slot:selectedNama><span wire:text="selectedNama"></span></x-slot>
+        <div class="flex flex-col gap-2">
+            <flux:button wire:click="$dispatch('edit')" icon='pencil'>Edit</flux:button>
+            <flux:button variant="danger" wire:click="$dispatch('confirm-delete')" icon='trash'>Delete</flux:button>
+        </div>
+    </x-partials.modal-selected>
+
+    {{-- *** Modal Confirm : Hapus --}}
+    <x-partials.modal-confirm mode="delete">
+        <x-slot:selectedNama><span wire:text="selectedNama"></span></x-slot>
+        <flux:button variant="danger" x-on:click="$wire.hapus($wire.selectedKode)">Ya</flux:button>
+    </x-partials.modal-confirm>
 </div>
 
 {{-- *** Script --}}
 <script>
+    $wire.on('selected-data', (e) => {
+        $wire.selectedNama = e.data.nama;
+        $wire.selectedKode = e.data.kodetestimoni;
+        Flux.modal('modalPilihData').show();
+    });
+
+    $wire.on('edit', (e) => {
+        Livewire.navigate(`/admin/testimoni/edit/${$wire.selectedKode}`);
+    });
+
     $wire.on('confirm-delete', (e) => {
-        Swal.fire({
-            title: 'Hapus Data',
-            text: `Hapus data ${$e.data.namauser} dari sistem, lanjutkan ?`,
-            icon: "question",
-            showCancelButton: true,
-        }).then((result) => {
-            if (result.isConfirmed) {
-                $wire.hapus($e.data.kodeuser);
-            }
-        });
+        Flux.modal('modalPilihData').close();
+        Flux.modal('modalConfirm').show();
     });
 </script>

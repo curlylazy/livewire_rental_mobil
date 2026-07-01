@@ -16,8 +16,10 @@ return new class extends Migration
             $table->string('username');
             $table->string('nama');
             $table->string('password');
+            $table->string('akses', 25)->comment('admin, staff');
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
